@@ -15,7 +15,7 @@
 
 ### Association
 
-- has_many :products, through: :user_products
+- has_many :products
 - has_many :purchasers
 
 ## products テーブル
@@ -34,7 +34,7 @@
 
 ### Association
 
-- has_many :users, through: :user_products
+- belongs_to :user
 - has_one   :purchaser
 
 ## purchasers テーブル
@@ -52,16 +52,4 @@
 ### Association
 
 - belongs_to :user
-- belongs_to  :product
-
-## user_products テーブル
-
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| user      | references | null: false, foreign_key: true |
-| product   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to  :user
-- belongs_to  :product
+- belongs_to :product
