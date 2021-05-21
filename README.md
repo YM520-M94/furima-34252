@@ -4,7 +4,7 @@
 
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
-| nickname           | string | null: false              |
+| nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 | first_name         | string | null: false               |
@@ -47,8 +47,8 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :purchaser
-- has_one :addresse
+- belongs_to :product
+- has_one :address
 
 ## addresses テーブル
 
