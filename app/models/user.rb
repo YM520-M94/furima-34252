@@ -3,18 +3,27 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  validates :nickname,           presence: true
   
-  validates :password,           presence: true, format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]{6,}+\z/i},  allow_blank: true
-  validates :last_name,          presence: true
-  validates :last_name,          format: {with: /\A[ぁ-んァ-ン一-龠々]+\z/ }, allow_blank: true
-  validates :first_name,         presence: true
-  validates :first_name,         format: {with: /\A[ぁ-んァ-ン一-龠々]+\z/ }, allow_blank: true
-  validates :last_name_reading,  presence: true
-  validates :last_name_reading,  format: {with: /\A[ァ-ヶー－]+\z/ }, allow_blank: true
-  validates :first_name_reading, presence: true
-  validates :first_name_reading, format: {with: /\A[ァ-ヶー－]+\z/ }, allow_blank: true
-  validates :birthday,           presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :birthday
+    validates :last_name
+    validates :first_name
+    validates :last_name_reading
+    validates :first_name_reading
+  end
 
+  with_options allow_blank: true do
+    with_options format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]{6,}+\z/i} do
+      validates :password
+    end
+    with_options  format: {with: /\A[ぁ-んァ-ン一-龠々]+\z/ } do
+      validates :last_name
+      validates :first_name
+    end
+    with_options format: {with: /\A[ァ-ヶー－]+\z/ } do
+      validates :last_name_reading
+      validates :first_name_reading
+    end
+  end
 end
