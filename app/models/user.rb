@@ -5,12 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname,           presence: true
-  validates :email,              presence: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  validates :password,           presence: true, format: {with: /\A[a-z\d]{6,}+\z/i}
-  validates :last_name,          presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]+\z/ }
-  validates :first_name,         presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]+\z/ }
-  validates :last_name_reading,  presence: true, format: {with: /\A[ァ-ヶー－]+\z/ }
-  validates :first_name_reading, presence: true, format: {with: /\A[ァ-ヶー－]+\z/ }
+  
+  validates :email,              presence: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, allow_blank: true
+  validates :password,           presence: true, format: {with: /\A[a-z\d]{6,}+\z/i},                   allow_blank: true
+  validates :last_name,          presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]+\z/ },               allow_blank: true
+  validates :first_name,         presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]+\z/ },               allow_blank: true
+  validates :last_name_reading,  presence: true, format: {with: /\A[ァ-ヶー－]+\z/ },                    allow_blank: true
+  validates :first_name_reading, presence: true, format: {with: /\A[ァ-ヶー－]+\z/ },                    allow_blank: true
   validates :birthday,           presence: true
 
 end
