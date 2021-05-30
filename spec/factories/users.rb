@@ -1,5 +1,5 @@
 FactoryBot.define do
-  password = Faker::Internet.password(min_length: 6)
+  password = "0a"+Faker::Internet.password(min_length: 6)
 
   factory :user do
     nickname              {Faker::Name.initials(number: 2)}
