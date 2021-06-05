@@ -9,10 +9,16 @@ class ProductsController < ApplicationController
   end
 
   def create
-    Product.create(product_params)
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
+  
   def product_params
     params.require(:product).permit(:product, :listing_person, :price, :category_id, :product_state_id, :delivery_charge_id, :prefecture_id, :delivery_date_id, :image)
   end
