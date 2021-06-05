@@ -13,11 +13,13 @@ class Product < ApplicationRecord
     validates :product
     validates :listing_person
     validates :price
-    validates :category_id
-    validates :product_state_id
-    validates :delivery_charge_id
-    validates :prefecture_id
-    validates :delivery_date_id
+    with_options numericality: { other_than: 1 } do
+      validates :category_id
+      validates :product_state_id
+      validates :delivery_charge_id
+      validates :prefecture_id
+      validates :delivery_date_id
+    end
   end
 
 end
