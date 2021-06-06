@@ -25,9 +25,9 @@ class Product < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  belongs_to :productstate
-  belongs_to :deliverycharge
+  belongs_to :product_state
+  belongs_to :delivery_charge
   belongs_to :prefecture
-  belongs_to :deliverydate
+  belongs_to :delivery_date
 
 end
