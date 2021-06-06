@@ -6,7 +6,6 @@ class Product < ApplicationRecord
   with_options presence: true do
     validates :product
     validates :listing_person
-    validates :price
 
     with_options numericality: { other_than: 1 } do
       validates :category_id
