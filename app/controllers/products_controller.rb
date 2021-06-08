@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    #@products = Product.includes(:user)
+    @products = Product.includes(:user)
   end
 
   def new
