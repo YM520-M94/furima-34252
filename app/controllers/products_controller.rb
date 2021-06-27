@@ -52,7 +52,7 @@ class ProductsController < ApplicationController
   end
 
   def move_to_root
-    unless current_user.id == @product.user_id
+    unless (current_user.id == @product.user_id && @product.purchaser == nil)
       redirect_to root_path
     end
   end
