@@ -1,17 +1,15 @@
 class PurchasersController < ApplicationController
   before_action :authenticate_user!,      only: [:index, :create]
-  before_action :set_params,              only: [:index, :create, :move_to_index, :move_to_index_purchaser]
+  before_action :set_params,              only: [:index, :create]
   before_action :move_to_index,           only: [:index, :create]
   before_action :move_to_index_purchaser, only: [:index, :create]
 
   def index
     @purchaser_address = PurchaserAddress.new
-    #@product = Product.find(params[:product_id])
   end
 
   def create
     @purchaser_address = PurchaserAddress.new(purchaser_params)
-    #@product = Product.find(params[:product_id])
     if @purchaser_address.valid?
       pay_product
       @purchaser_address.save
@@ -41,14 +39,12 @@ class PurchasersController < ApplicationController
   end
 
   def move_to_index
-    #@product = Product.find(params[:product_id])
     if current_user.id == @product.user_id
     redirect_to root_path 
     end
   end
 
   def move_to_index_purchaser
-    #@product = Product.find(params[:product_id])
     if @product.purchaser.present?
       redirect_to root_path 
     end
