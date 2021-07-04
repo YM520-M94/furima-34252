@@ -1,13 +1,13 @@
 class Product < ApplicationRecord
 
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   has_one   :purchaser
 
   with_options presence: true do
     validates :product
     validates :listing_person
-    validates :image
+    validates :images
 
     with_options numericality: { other_than: 1 } do
       validates :category_id

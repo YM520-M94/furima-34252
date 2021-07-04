@@ -7,7 +7,13 @@
       <%= @product.product %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag @product.image ,class:"item-box-img" if @product.image.attached? %>
+
+<%# 複数枚の追加実装 %>
+      <% @product.images.each do |image| %>
+        <%= image_tag image , class:"item-box-img"%>
+      <% end %>
+<%# // 複数枚の追加実装 %>
+
       <% if @product.purchaser.present? %>
         <div class="sold-out">
           <span>Sold Out!!</span>
