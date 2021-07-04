@@ -205,3 +205,9 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.new-img{
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+}
